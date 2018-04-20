@@ -1,0 +1,52 @@
+body{
+    background-color: #D3D1D0;	  	 	
+	background-attachment: fixed;
+	text-decoration: none;
+}
+h1 {
+	text-align: center;
+}
+h2 {
+	text-transform: uppercase;
+	font-weight: black;
+}
+.register{
+	background-color: #D3D1D0;
+	border: 1px hidden #000000;
+	padding: 15px;
+	width: 25% ;
+	height: 25%;
+	margin: 20px auto;
+	float: center;
+	text-align: left;
+}
+.user{
+	background-color: #AFACAC;
+	border: 1px hidden #000000;
+	padding: 15px;
+	width: 25% ;
+	height: 25%;
+	margin: 20px auto;
+	float: center;
+	text-align: left;
+}
+.admin{
+	background-color: #AFACAC;
+	border: 1px hidden #000000;
+	padding: 15px;
+	width: 25% ;
+	height: 25%;
+	margin: 20px auto;
+	float: center;
+	text-align: left;
+}
+.login{
+    background-color: #AFACAC;
+    border: 1px hidden #000000;
+    padding: 15px;
+    width: 25% ;
+    height: 25%;
+    margin: 20px auto;
+    float: center;
+    text-align: left;
+}
