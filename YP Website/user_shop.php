@@ -76,7 +76,7 @@ include 'includes/header.php';
 		<?php
 
 		$connect = mysqli_connect('localhost','root','','capstone2');
-		$query = 'SELECT * FROM product_table ORDER by productID ASC';
+		$query = 'SELECT * FROM product ORDER by productID ASC';
 		$result = mysqli_query($connect,$query);
 
 		if($result):

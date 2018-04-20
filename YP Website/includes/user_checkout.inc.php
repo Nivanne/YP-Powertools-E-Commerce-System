@@ -24,10 +24,10 @@
 		mysqli_query($db,$query);
 		
 		$checkout_id = mysqli_insert_id($db);
-		$query = "SELECT product_table.product_name as name, product_table.product_price as price, cart.quantity as quantity
+		$query = "SELECT product.product_name as name, product.product_price as price, cart.quantity as quantity
 					FROM cart 
-					INNER JOIN product_table
-					ON cart.product_id = product_table.productID
+					INNER JOIN product
+					ON cart.product_id = product.productID
 					WHERE cart.user_id = $id;";
 		$result = mysqli_query($db, $query);
 		
@@ -35,7 +35,6 @@
 		while($row = mysqli_fetch_assoc($result)){
 			$result_array[] = $row;
 		}
-		
 		
 		//print_r($result_array);
 		
@@ -46,7 +45,7 @@
 				
 				$query = "INSERT INTO `transactions`(`checkout_id`, `user_name`, `product_name`, `product_price`, `product_qty`) 
 					VALUES ($checkout_id, '$user', '$product_name', '$product_price', '$product_qty')";
-				//mysqli_query($db, $query);
+				mysqli_query($db, $query);
 		}
 		
 		$query = "DELETE FROM cart WHERE user_id = $id";
@@ -55,7 +54,7 @@
 		$_SESSION['recent_checkout_id'] = $checkout_id;
 		
 		//$_SESSION['msg'] = "Address saved";
-		header('Location: ../user_shipping.php');
+		header('Location: ../user_checkout.php');
 		
 		
 	}

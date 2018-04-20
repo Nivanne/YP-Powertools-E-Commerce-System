@@ -16,20 +16,20 @@ include 'includes/header.php';
 			//echo $_SESSION['id'];
 
 		 $rec = mysqli_query($db,"SELECT cart.product_id,product_name,product_type,product_description,product_price,product_image,SUM(quantity) AS quantity, (product_price * SUM(quantity) ) as subTotal
-								FROM product_table
+								FROM product
 								INNER JOIN cart
-								ON product_table.productID = cart.product_id
+								ON product.productID = cart.product_id
                                 WHERE cart.user_id = $userID
-								GROUP BY product_table.product_name, product_table.product_type, product_table.product_description, product_table.product_price, product_table.product_image");
+								GROUP BY product.product_name, product.product_type, product.product_description, product.product_price, product.product_image");
 		
 		$sql = mysqli_query($db,"SELECT SUM(subtotal.subtotal_value) AS total
 								FROM (SELECT (product_price * SUM(quantity)) as subtotal_value
-								FROM product_table
+								FROM product
 								INNER JOIN cart
-								ON product_table.productID = cart.product_id
+								ON product.productID = cart.product_id
                                	WHERE cart.user_id = $userID
-								GROUP BY product_table.product_name, product_table.product_type, product_table.product_description, 
-								product_table.product_price, product_table.product_image) subtotal"); 
+								GROUP BY product.product_name, product.product_type, product.product_description, 
+								product.product_price, product.product_image) subtotal"); 
 						    $total_result = mysqli_fetch_assoc($sql);
 							$total = $total_result['total'];
 ?>
@@ -80,7 +80,7 @@ include 'includes/header.php';
 </nav>
 
 <div class="container">
- <!table ->
+ <!-- table -->
  <center>
  
  <h2> Cart Table </h2>

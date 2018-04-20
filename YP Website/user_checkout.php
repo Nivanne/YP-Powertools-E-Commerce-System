@@ -15,6 +15,9 @@ include 'includes/header.php';
 	//display of records
 	$results = mysqli_query($db, "SELECT * FROM checkout WHERE checkout_id = $recent_checkout_id;");
 
+	$results_product = mysqli_query($db, "SELECT * 
+										  FROM `transactions` 
+										  WHERE checkout_id = $recent_checkout_id;");
 
 ?>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -57,7 +60,7 @@ include 'includes/header.php';
 	<center><h2>Checkout</h2></center>
 	<br/>
 
-	<!table ->
+	<!-- table -->
 	<table class="table table-striped">
 		<thead class="thead-dark">
 		<tr>
@@ -81,6 +84,26 @@ include 'includes/header.php';
 			</tr>
 			<?php	} ?>
 			
+		</tbody>
+	</table>
+	
+	<table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+			<th  scope="col">Product Name</th>
+			<th  scope="col">Price</th>
+			<th  scope="col">Quantity</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<?php while ($row = mysqli_fetch_array($results_product)): ?>
+			<tr>
+				<td><?php echo $row['product_name']; ?></td>
+				<td>₱<?php echo $row['product_price']; ?></td>
+				<td><?php echo $row['product_qty']; ?></td>
+			</tr>
+			<?php endwhile ?>
 		</tbody>
 	</table>
 </div>
